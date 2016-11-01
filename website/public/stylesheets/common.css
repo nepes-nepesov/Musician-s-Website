@@ -1,0 +1,80 @@
+@font-face { font-family: Trueno-Light; src: url('../fonts/trueno/TruenoLt.otf'); }
+
+html,
+body {
+  height:100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* DoubleNB Logo */
+
+a {
+  text-decoration: none;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+header {
+  background-color: #e6e6e6;
+  font-family: Trueno-Light;
+}
+
+#doublenb-logo {
+  display: inline-block;
+  left: 0;
+  margin-left: 50px;
+  margin-right: 20px;
+  height: 63px;
+  line-height: 63px;
+}
+
+#doublenb-logo > a {
+  display: inline-block;
+  height: 63px;
+}
+
+#doublenb-logo img {
+  width: auto;
+  height: 40px;
+  padding: 10px;
+}
+
+
+
+/* /DoubleNB Logo */
+
+/* Nav */
+
+nav {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  height: 63px;
+  line-height: 63px;
+}
+
+nav > a {
+  display: inline-block;
+  height: 63px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-transform: uppercase;
+  color: #9A8BA8;
+}
+
+nav > a:hover {
+  color: white;
+  background: -webkit-linear-gradient(#AB9EC1, #AC969D);
+  background: -moz-linear-gradient(#AB9EC1, #AC969D);
+  background: -o-linear-gradient(#AB9EC1, #AC969D);
+  background: linear-gradient(#AB9EC1, #AC969D);
+}
+
+/* /Nav */
+

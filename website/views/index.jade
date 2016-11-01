@@ -1,0 +1,60 @@
+doctype html
+//
+  Problem:
+  The HTMLMediaElement passed to createMediaElementSource has a cross-origin resource, the node will output silence.  audio-oscilloscope.js:9:13
+  Solution:
+  Media servers should serve the audio files with a CORS "Access-Control-Allow-Origin: *" HTTP response header
+html
+  head
+    meta(charset='utf-8')
+    title Audio
+    link(rel='stylesheet', type="text/css", href='stylesheets/index.css')
+    link(rel='stylesheet', type="text/css", href='stylesheets/common.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto', rel='stylesheet')
+  body
+    header
+      #doublenb-logo
+        a(href='/')
+          img(src='images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='#') Video
+        //
+        a(href='#') Events
+        //
+        a(href='#') Bio
+    main
+      section#audio-outer
+        #h1
+          h1 Instrumentals For Sale
+        i
+          | Listen to, buy and share music created recently by 
+          a(href='#' id="doublenb-profile") DoubleNB
+          | .
+        each audio, i in audioList
+          .audio-inner
+            .audio-inner-left
+              .cover-art-container
+                img.cover-art(src='#{audio.cover_path}', alt='Cover')
+              audio(src='#{audio.audio_path}', controls='controls')
+                | Your browser does not support the 
+                code audio
+                |  element.
+            .audio-inner-right
+              .audio-info
+                h3 Info
+                hr
+                table
+                  tr
+                    td.info-first-col Title: 
+                    td #{audio.title}
+                  tr
+                    td.info-first-col Year: 
+                    td #{audio.year}
+                  tr
+                    td.info-first-col Price:
+                    td USD #{audio.price}
+              .buttons
+                a.buy-button(href='/payment', target='_blank') Buy
+                a.share-button(href='#', target='_blank') Share
