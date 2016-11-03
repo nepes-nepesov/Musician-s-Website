@@ -1,3 +1,19 @@
+//Get product requested to purchase
+
+function getURLParameter(name, url) { // "name" is the parameter name
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var currentURL = window.location.href;
+var passedParam = getURLParameter("id", currentURL); // product ID
+
+console.log(passedParam);
+
 /*
   There are three steps for registering token:
   Step 1. Collecting credit card information with Stripe.js
@@ -16,6 +32,7 @@
   The handler should send the form data to Stripe for tokenization and prevent the form's submission. 
   (The form will be submitted by JavaScript later.)
 */
+
 Stripe.setPublishableKey('pk_test_rc9YXvtg5HuFinuDJukp1HeR');
 $(function () {
   var $form = $('#payment-form');
@@ -28,9 +45,12 @@ $(function () {
     return false;
   });
 });
+
+
 /*
   Step 3: Sending the form to your server
 */
+
 function stripeResponseHandler(status, response) {
   // Grab the form:
   var $form = $('#payment-form');
@@ -42,10 +62,12 @@ function stripeResponseHandler(status, response) {
   else { // Token was created!
     // Get the token ID:
     var token = response.id;
-    console.log(token);
+    console.log(token); //debug
     // Insert the token ID into the form so it gets submitted to the server:
     //$form.append($('<input type="hidden" name="stripeToken">').val(token));
     $form.append("<input type='hidden' name='stripeToken' value='" + response.id + "'/>");
+    $form.append("<input type='hidden' name='productId' value='" + passedParam + "'/>");
+    
     // Submit the form:
     $form.get(0).submit();
   }

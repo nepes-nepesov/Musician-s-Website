@@ -56,5 +56,6 @@ html
                     td.info-first-col Price:
                     td USD #{audio.price}
               .buttons
-                a.buy-button(href='/payment', target='_blank') Buy
+                a.buy-button(id=audio._id, href='#', target='_blank') Buy
                 a.share-button(href='#', target='_blank') Share
+  script(type='text/javascript', src='javascripts/product-btn-bind.js')
