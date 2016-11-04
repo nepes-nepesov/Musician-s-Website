@@ -60,7 +60,6 @@ app.post('/after-charge', function(req, res) {
       //let user download the purchased product, i.e. audio file
       //use charge.description as id for product
       
-      // Test //
       var MongoClient = mongo.MongoClient;
   
       var url = 'mongodb://localhost:27017/test';   
@@ -77,12 +76,113 @@ app.post('/after-charge', function(req, res) {
           
           var collection = db.collection('audios');
           collection.find({ _id: prodToPurchaseId }).limit(1).next( function(err, result) { 
-            if (err) {                                                              //!!! there is a bug here
+            if (err) {
               res.send(err);
             } else if (result) {
-          
-              // TODO: give user download the product file which is described by <result>
-              console.log(result);
+              var audioPath = result.audio_path;
+              
+              console.log(audioPath);
+              
+              // ------------- TODO: give user download the product file which is described by <result> ------------- //
+              
+              // Create ftpd server
+              var ftpd = require('ftpd');
+              var fs = require('fs');
+              var path = require('path');
+              var keyFile;
+              var certFile;
+              var server;
+              var options = {
+                host: process.env.IP || '127.0.0.1',
+                port: process.env.PORT || 7002,
+                tls: null,
+              };
+              
+              server = new ftpd.FtpServer(options.host, {
+                getInitialCwd: function() {
+                  return '/';
+                },
+                getRoot: function() {
+                  return process.cwd();
+                }
+                
+              });
+              
+              server.on('error', function(error) {
+                console.log('FTP Server error:', error);
+              });
+              
+              server.on('client:connected', function(connection) {
+                var username = null;
+                console.log('client connected: ' + connection.remoteAddress);
+                connection.on('command:user', function(user, success, failure) {
+                  if (user) {
+                    username = user;
+                    success();
+                  } else {
+                    failure();
+                  }
+                });
+              
+                connection.on('command:pass', function(pass, success, failure) {
+                  if (pass) {
+                    success(username);
+                  } else {
+                    failure();
+                  }
+                });
+              });
+              
+              server.debugging = 4;
+              server.listen(options.port);
+              console.log('Listening on port ' + options.port);
+              
+              /*
+              //create ftp client - WORKING
+              var ftpClient = require('ftp-client');
+              var config = ({
+                host: 'localhost',
+                port: 7002, //must be same port as in ftp server
+                user: 'anonymous',
+                password: 'anonymous@'
+              });
+              client = new ftpClient(config, options);
+              
+              client.connect(function () {
+                console.log('Client ready to download file ' + audioPath);
+                client.download(
+                  "./public/audio",  // source 
+                  "/Users/nepes/Downloads/",    // destination
+                  function (result) {
+                    console.log(result);
+                });
+              });
+              */
+              
+              var Client = require('ftp');
+              var fs = require('fs');
+
+              var config = ({
+                host: 'localhost',
+                port: 7002, //must be same port as in ftp server
+                user: 'anonymous',
+                password: 'anonymous@'
+              });
+              
+              var c = new Client();
+              c.on('ready', function() {
+                c.get('public/' + audioPath, function(err, stream) {
+                  if (err) throw err;
+                  stream.once('close', function() { c.end(); });
+                  stream.pipe(fs.createWriteStream('/Users/nepes/Downloads/' + audioPath));
+                });
+              });
+              
+              // connect to localhost:7002 as anonymous
+              c.connect(config);
+              
+              // ----------------------------------------------------------------------------------------------------- //
+              
             } else {
               res.send('No documents found');
             }
@@ -91,8 +191,6 @@ app.post('/after-charge', function(req, res) {
           });
         }
       });
-      
-      // ---- //
     }
   });
   
