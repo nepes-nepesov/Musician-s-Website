@@ -174,7 +174,8 @@ app.post('/after-charge', function(req, res) {
                 c.get('public/' + audioPath, function(err, stream) {
                   if (err) throw err;
                   stream.once('close', function() { c.end(); });
-                  stream.pipe(fs.createWriteStream('/Users/nepes/Downloads/' + audioPath));
+                  var filename = audioPath.replace("audio/", ""); // WARNING: if "audio/" string occurs in the filename, it will be erased
+                  stream.pipe(fs.createWriteStream('/Users/nepes/Downloads/' + filename));
                 });
               });
               
