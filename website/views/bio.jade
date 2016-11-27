@@ -1,0 +1,57 @@
+doctype html
+//
+  Problem:
+  The HTMLMediaElement passed to createMediaElementSource has a cross-origin resource, the node will output silence.  audio-oscilloscope.js:9:13
+  Solution:
+  Media servers should serve the audio files with a CORS "Access-Control-Allow-Origin: *" HTTP response header
+html
+  head
+    meta(charset='utf-8')
+    title Bio
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/bio.css')
+    link(rel='stylesheet', href='stylesheets/common.css')
+    link(rel='stylesheet', href='stylesheets/animations.css')
+  body
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/player_2.png')
+      source(src='videos/background/player_2.mov')
+    // canvas id="audio-canvas"></canvas
+    header
+      a#doublenb-logo-link(href='welcome')
+        img(src='images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='video') Video
+        //
+        a(href='events') Events
+        //
+        a(href='bio') Bio
+    main
+      h1#banner Who is DoubleNB anyway?
+      pre#description.text-highlight.
+        Here, you can read a general info on DoubleNB.        
+      section#content-outer
+        section.content-inner
+          h3 General
+          p
+            | DoubleNB is the nickname of Nepes Nepesov, the music producer and beat-maker who provides music instrumentals, tutorials and full-song recording services to his clients.
+        section.content-inner
+          h3 Why "DoubleNB"?
+          p
+            | DoubleNB => NNB => Nepesov Nepes Batyrovich => the producers initials
+        section.content-inner
+          h3 Production
+          p
+            | DoubleNB produced music since his high-school years. He has collaborated with such artist as Timur Huseynov, AnG, and SENJI.
+    footer
+      #site-info
+        p#doublenb-2016 DoubleNB | 2016
+        p#powered-by
+          | Powered by 
+          a(href='#') Nipi
+    // script src="../js/audio-oscilloscope.js"></script
+    script(src='../js/audio-metadata.js')

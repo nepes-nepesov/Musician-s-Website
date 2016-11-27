@@ -1,0 +1,22 @@
+#content-outer {
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.content-inner {
+  margin: 20px;
+  color: #d4d0d0;
+  background-color: rgba(17, 3, 28, 0.48);
+  padding: 30px;
+  font-size: 20px;
+  box-shadow: 1px 1px 1px black;
+}
+
+.content-inner h3 {
+  color: rgba(209, 208, 212, 0.9);
+  text-shadow: 1px 1px 1px #351d57;
+}
+
+.content-inner p {
+  margin-left: 20px;
+}

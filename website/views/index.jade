@@ -8,54 +8,61 @@ html
   head
     meta(charset='utf-8')
     title Audio
-    link(rel='stylesheet', type="text/css", href='stylesheets/index.css')
-    link(rel='stylesheet', type="text/css", href='stylesheets/common.css')
-    link(href='https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/index.css')
+    link(rel='stylesheet', href='stylesheets/common.css')
+    link(rel='stylesheet', href='stylesheets/animations.css')
   body
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/mix.png')
+      source(src='videos/background/mix.mov')
+    // <canvas id="audio-canvas"></canvas>
     header
-      #doublenb-logo
-        a(href='/')
-          img(src='images/logo.png', alt='DoubleNB Logo')
+      a#doublenb-logo-link(href='welcome')
+        img(src='images/logo.png', alt='DoubleNB Logo')
       nav
         a(href='/') Audio
         //
-        a(href='#') Video
+        a(href='video') Video
         //
-        a(href='#') Events
+        a(href='events') Events
         //
-        a(href='#') Bio
+        a(href='bio') Bio
     main
       section#audio-outer
-        #h1
-          h1 Instrumentals For Sale
-        i
-          | Listen to, buy and share music created recently by 
-          a(href='#' id="doublenb-profile") DoubleNB
-          | .
+        h1#banner Production, made easy
+        pre#description.text-highlight.
+          Here, you can listen to and buy instrumentals created by DoubleNB. If you would like a custom instrumental, contact doublenb.music@gmail.com. Check back as the list is updated frequently.          
         each audio, i in audioList
-          .audio-inner
-            .audio-inner-left
-              .cover-art-container
-                img.cover-art(src='#{audio.cover_path}', alt='Cover')
-              audio(src='#{audio.audio_path}', controls='controls')
-                | Your browser does not support the 
-                code audio
-                |  element.
-            .audio-inner-right
-              .audio-info
-                h3 Info
-                hr
-                table
-                  tr
-                    td.info-first-col Title: 
-                    td #{audio.title}
-                  tr
-                    td.info-first-col Year: 
-                    td #{audio.year}
-                  tr
-                    td.info-first-col Price:
-                    td USD #{audio.price}
-              .buttons
+          details.audio-inner
+            summary
+              div
+                h3 #{audio.title}
+                audio(src='#{audio.audio_path}', controls='controls' preload='none')
+                  | Your browser does not support the 
+                  code audio
+                  |  element.
                 a.buy-button(id=audio._id, href='#', target='_blank') Buy
-                a.share-button(href='#', target='_blank') Share
+            .audio-info
+              p
+                | Title:&nbsp;
+                span.audio-title
+                  | #{audio.title}
+              p 
+                | Year:&nbsp;
+                span.audio-year  
+                  | #{audio.year}
+              p
+                | Genre:&nbsp;
+                span.audio-genre
+                  | #{audio.genre}
+              p
+                | Price:&nbsp; 
+                span.audio-price 
+                  | #{audio.price}
+    
+    // script src="../js/audio-oscilloscope.js"></script
+    script(src='../js/audio-metadata.js')
   script(type='text/javascript', src='javascripts/product-btn-bind.js')

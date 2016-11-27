@@ -1,8 +1,44 @@
 doctype html
-
 html
   head
     meta(charset='utf-8')
-    title Audio
+    title Purchase succeeded
+    link(rel='stylesheet', type='text/css', href='stylesheets/common.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/after-charge.css')
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    script(type='text/javascript', src='https://js.stripe.com/v2/')
+    script(type='text/javascript', src='javascripts/payment.js')
+    // script type="text/javascript" src="javascripts/pay-bind-after.js"></script
   body
-    h1 After-Charge page
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/concert.png')
+      source(src='videos/background/concert.mp4', type='video/mp4')
+    header
+      a#doublenb-logo-link(href='welcome.html')
+        img(src='images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='video') Video
+        //
+        a(href='events') Events
+        //
+        a(href='bio') Bio
+    main
+      h1#banner Purchase Succeded
+      h2 Thanks for using our services.
+      h4
+        | Your file will start downloading immediately. 
+        br
+        |  Check your Downloads folder and hit the stage.
+      #proceed-button.button
+        a(href='/') Got it, thanks!
+    footer
+      #site-info
+        p#doublenb-2016 DoubleNB | 2016
+        p#powered-by
+          | Powered by 
+          a(href='#') Nipi

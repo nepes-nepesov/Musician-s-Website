@@ -1,0 +1,11 @@
+main {
+  text-align: center;
+}
+
+iframe {
+  display: block;
+  margin: 0;
+  width: 100vw;
+  height: 56.25vw; /* height/width ratio = 315/560 = .5625 */
+  border: 2px solid rgba(206, 198, 198, 0.46);
+}

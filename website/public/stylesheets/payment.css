@@ -1,0 +1,91 @@
+main {
+  margin: auto;
+  display: table;
+  /* center vertically */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* --- */
+}
+
+form > fieldset {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.28);
+  box-shadow: 1px 1px 1px black;
+}
+
+form > fieldset > legend {
+  color: white;
+  text-align: center;
+}
+
+form label {
+  color: #cecbcb;
+}
+
+div.form-row,
+form input.submit {
+  margin: 10px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #6d6c6f;
+  height: 18px;
+  text-align: center;
+}
+
+input#card-num {
+  display: block;
+  width: 88%;
+}
+
+input#mm,
+input#yy {
+  width: 25px;
+}
+
+input#cvc {
+  width: 50px;
+}
+
+div#flexing {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+div#exp-container {
+  display: inline-block;
+  flex: 2;
+}
+
+div#cvc-container {
+  display: inline-block;
+  flex: 1;
+}
+
+form input.submit {
+  padding: 20px;
+  min-width: 50px;
+  height: 80px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: "Abel", sans-serif;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+}
+
+.payment-errors {
+  margin: auto;
+  color: red;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+}

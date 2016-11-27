@@ -1,35 +1,62 @@
 doctype html
-//
-  Problem:
-  The HTMLMediaElement passed to createMediaElementSource has a cross-origin resource, the node will output silence.  audio-oscilloscope.js:9:13
-  Solution:
-  Media servers should serve the audio files with a CORS "Access-Control-Allow-Origin: *" HTTP response header
 html
   head
     meta(charset='utf-8')
-    title Audio
-    link(rel='stylesheet', type="text/css", href='stylesheets/common.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    title Payment
+    link(rel='stylesheet', type='text/css', href='stylesheets/common.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/payment.css')
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js') 
     // Used by Stripe in payment.js
     script(type='text/javascript', src='https://js.stripe.com/v2/')
     script(type='text/javascript', src='javascripts/payment.js')
     script(type='text/javascript', src='javascripts/pay-bind-after.js')
   body
-    form#payment-form(action='/after-charge', method='POST')
-      label Product Title: #{audioToPurchase.title}
-        span.payment-errors
-        .form-row
-          label
-            span Card Number
-            input(type='text', size='20', data-stripe='number', value='4242424242424242')
-        .form-row
-          label
-            span Expiration (MM/YY)
-            input(type='text', size='2', data-stripe='exp_month', value='12')
-          span  / 
-          input(type='text', size='2', data-stripe='exp_year', value='18')
-        .form-row
-          label
-            span CVC
-            input(type='text', size='4', data-stripe='cvc', value='123')
-        input.submit(type='submit', value='Submit Payment')
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/concert.png')
+      source(src='videos/background/concert.mp4', type='video/mp4')
+    header
+      a#doublenb-logo-link(href='welcome')
+        img(src='../images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='video') Video
+        //
+        a(href='events') Events
+        //
+        a(href='bio') Bio
+    main
+      form#payment-form(action='/after-charge', method='POST')
+        fieldset
+          legend
+            | Purchasing "
+            span(style='text-shadow: 0 0 10px black; font-size: 1.1em;') #{audioToPurchase.title}
+            |"
+          span.payment-errors
+          .form-row
+            label
+              span Card Number
+              input#card-num(type='text', size='20', data-stripe='number', value='4242424242424242')
+          #flexing.form-row
+            #exp-container
+              label
+                span Expiration (MM/YY)
+                br
+                input#mm(type='text', size='2', data-stripe='exp_month', value='12')
+              span(style='color: white;')  / 
+              input#yy(type='text', size='2', data-stripe='exp_year', value='18')
+            #cvc-container
+              label
+                span CVC
+                br
+                input#cvc(type='text', size='4', data-stripe='cvc', value='123')
+          input.submit(type='submit', value='Gimme Music Already')
+    footer
+      #site-info
+        p#doublenb-2016 DoubleNB | 2016
+        p#powered-by
+          | Powered by 
+          a(href='#') Nipi

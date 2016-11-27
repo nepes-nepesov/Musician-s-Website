@@ -24,7 +24,7 @@ router.get('/', function(req, res) {                        //router.get(URL req
       console.log("Connection established");
       
       var collection = db.collection('audios');
-      collection.find({}).toArray(function(err, result) {   //TODO: filter out by one audio by its title
+      collection.find({}).toArray(function(err, result) {
         if (err) {
           res.send(err);
         } else if (result.length) {
@@ -55,7 +55,7 @@ router.get('/payment', function(req, res) {
       
       var collection = db.collection('audios');
       collection.find({ _id: prodToPurchaseId }).limit(1).next( function(err, result) { 
-        if (err) {                                                              //!!! there is a bug here
+        if (err) {
           res.send(err);
         } else if (result) {
           res.render('payment', { "audioToPurchase" : result });                // if found, result is only one document

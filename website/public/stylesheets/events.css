@@ -1,0 +1,21 @@
+#events-table {
+  margin: 25px auto;
+  border-collapse: collapse;
+  color: white;
+  background-color: rgba(16, 34, 52, 0.61);
+  text-align: center;
+  box-shadow: 1px 1px 3px black;
+}
+
+tr,
+td {
+  padding: 30px;
+  border: 1px solid rgba(228, 228, 235, 0.1);
+}
+
+th {
+  color: white;
+  background-color: rgba(44, 44, 44, 0.26);
+  border: 1px solid rgba(228, 228, 235, 0.1);
+}
+

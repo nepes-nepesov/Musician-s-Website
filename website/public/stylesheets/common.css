@@ -1,4 +1,4 @@
-@font-face { font-family: Trueno-Light; src: url('../fonts/trueno/TruenoLt.otf'); }
+/* Global */
 
 html,
 body {
@@ -7,74 +7,233 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Abel", sans-serif;
 }
 
-/* DoubleNB Logo */
-
-a {
+a,
+input.submit {
   text-decoration: none;
-  -webkit-transition: 0.1s;
-  -moz-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1#banner {
+  margin: 0;
+  color: #d9e3db;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 100px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.text-highlight {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.58);
+}
+
+/* "Proceed" Button */
+
+#proceed-button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#proceed-button > a {
+  display: inline-block;
+  padding: 20px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#proceed-button > a,
+a.buy-button,
+input.submit {
+  border: 2px solid #74b97e;
+  color: white;
+  background-color: #63CA72;
+  text-shadow: 2px 2px 80px black;
+  transform: 
+}
+
+#proceed-button > a:hover,
+a.buy-button:hover,
+input.submit:hover {
+  border-color: #63CA72;
+  color: #63CA72;
+  background-color: rgba(99, 202, 114, 0.21);
+  text-shadow: 2px 2px 80px black;
+  text-decoration: none;
+}
+
+pre#description {
+  margin: 20px auto 20px auto;
+  padding: 40px;
+  width: 400px;
+  height: auto;
+  line-height: 1.5em;
+  text-align: center;
+  color: rgba(41, 41, 24, 0.86);
+  font-size: 1.2em;
+  font-family: "Abel", sans-serif;
+  
+  white-space: pre-wrap;          /* css-3 */
+	white-space: -moz-pre-wrap;     /* Mozilla, since 1999 */
+	white-space: -pre-wrap;         /* Opera 4-6 */
+	white-space: -o-pre-wrap;       /* Opera 7 */
+	word-wrap: break-word;          /* Internet Explorer 5.5+ */
+  
+  background-color: rgba(255, 255, 255, 0.81);
+  text-shadow: 1px 1px 2px white;
+}
+
+pre#description > a {
+  color: #3e9642;
+}
+
+pre#description > a:hover {
+  color: #49db2e;
+}
+
+/* --- */
+
+/* /Global */
+
+/* Background Video */
+
+/* IE 8 */
+video {
+  display: block; 
+} 
+
+video#bgVideo { 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
+  background-size: cover; 
+  opacity: 1;
+}
+
+/* --- */
+
+/* Header */
 
 header {
-  background-color: #e6e6e6;
-  font-family: Trueno-Light;
+  display: table;
+  width: 100%;
+  font-family: "Abel", sans-serif;
 }
 
-#doublenb-logo {
+/* DoubleNB Logo - Link */
+
+a#doublenb-logo-link {
   display: inline-block;
-  left: 0;
-  margin-left: 50px;
-  margin-right: 20px;
-  height: 63px;
-  line-height: 63px;
 }
 
-#doublenb-logo > a {
-  display: inline-block;
-  height: 63px;
-}
-
-#doublenb-logo img {
-  width: auto;
-  height: 40px;
+a#doublenb-logo-link img {
+  display: block;
+  margin: 0;
+  width: 20px;
+  height: auto;
   padding: 10px;
+  -webkit-filter: brightness(130%);
+  filter: brightness(130%);
 }
 
+a#doublenb-logo-link:hover {
+  -webkit-filter: brightness(150%);
+  filter: brightness(150%);
+}
 
-
-/* /DoubleNB Logo */
+/* /DoubleNB Logo - Link */
 
 /* Nav */
 
 nav {
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  height: 63px;
-  line-height: 63px;
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
 }
 
 nav > a {
-  display: inline-block;
-  height: 63px;
-  padding-left: 30px;
-  padding-right: 30px;
+  margin: 20px;
   text-transform: uppercase;
-  color: #9A8BA8;
+  color: #eee9f4;
+  text-shadow: 1px 1px 1px black;
 }
 
 nav > a:hover {
   color: white;
-  background: -webkit-linear-gradient(#AB9EC1, #AC969D);
-  background: -moz-linear-gradient(#AB9EC1, #AC969D);
-  background: -o-linear-gradient(#AB9EC1, #AC969D);
-  background: linear-gradient(#AB9EC1, #AC969D);
 }
 
 /* /Nav */
+/* /Header */
 
+/* Footer */
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  background-color: rgba(245, 245, 245, 0);
+  text-shadow: 0px 0px 2px black;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+#site-info {
+  position: relative;
+}
+
+#doublenb-2016,
+#powered-by {
+  position: absolute;
+  top: 0;
+  padding: 0 10px 0 10px; 
+  max-width: 200px;
+  font-size: 12px;
+  color: rgba(252, 252, 252, 0.9);
+}
+
+#doublenb-2016 {
+  left: 0;
+}
+
+#powered-by {
+  right: 0; 
+}
+
+/* /Footer */

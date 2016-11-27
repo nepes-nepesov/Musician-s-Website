@@ -3,14 +3,43 @@ html
   head
     meta(charset='utf-8')
     title Welcome
-    link(rel='stylesheet', type="text/css", href='stylesheets/welcome.css')
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='stylesheets/common.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/welcome.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/animations.css')
   body
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/player_1.png')
+      source(src='videos/background/player_1.mov')
+      
+    header
+      a#doublenb-logo-link(href='welcome')
+        img(src='images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='video') Video
+        //
+        a(href='events') Events
+        //
+        a(href='bio') Bio
     main
-      #doublenb-logo
-        img(src='images/logo.png', alt='DoubleNB')
+      section
+        img#doublenb-logo-welcome(src='images/logo.png', alt='DoubleNB')
+        pre#welcome-text
+          span.text-highlight(style="font-style: 'Economica'; font-size: 50px; text-transform: uppercase; background-color: rgb(135, 126, 141); color: #ffde55; text-shadow: 2px 2px 2px #330d0a;")   Hi, there!
+          br 
+          br
+          span.text-highlight   Ever wanted to record a song but haven&rsquo;t known how?
+          br
+          span.text-highlight   Wanted to sing but had no soundtrack?
+          br
+          span.text-highlight   Or maybe you have thought about collab with other musicians?
+          br
+          span.text-highlight(style="font-style: 'Economica'; background-color: rgb(135, 126, 141); color: #ffde55; text-shadow: 2px 2px 2px #330d0a;")   Here is the RIGHT PLACE to start. Welcome to my website and rock!
+          br
+          span(style='font-style: italic; text-shadow: -1px -1px 0px #582727; text-transform: uppercase; color: #c7c7c7;')                                                                     - DoubleNB
       #proceed-button.button
-        a(href='/') Proceed
-    footer
-      #site-info
-        p#doublenb-2016 DoubleNB 2016
-        p#powered-by Powered by Nipi
+        a(href='/') Make me famous

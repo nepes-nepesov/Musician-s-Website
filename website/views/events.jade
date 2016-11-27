@@ -1,0 +1,86 @@
+doctype html
+//
+  Problem:
+  The HTMLMediaElement passed to createMediaElementSource has a cross-origin resource, the node will output silence.  audio-oscilloscope.js:9:13
+  Solution:
+  Media servers should serve the audio files with a CORS "Access-Control-Allow-Origin: *" HTTP response header
+html
+  head
+    meta(charset='utf-8')
+    title Events
+    link(href='https://fonts.googleapis.com/css?family=Abel|Cookie|Didact+Gothic|Economica|Philosopher|Open+Sans', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/events.css')
+    link(rel='stylesheet', href='stylesheets/common.css')
+    link(rel='stylesheet', href='stylesheets/animations.css')
+  body
+    //if lt IE 9
+      script.
+        document.createElement('video');
+    video#bgVideo(playsinline='', autoplay='', muted='', loop='', poster='images/posters/concert.png')
+      source(src='videos/background/concert.mp4')
+    // canvas id="audio-canvas"></canvas
+    header
+      a#doublenb-logo-link(href='welcome')
+        img(src='images/logo.png', alt='DoubleNB Logo')
+      nav
+        a(href='/') Audio
+        //
+        a(href='video') Video
+        //
+        a(href='events') Events
+        //
+        a(href='bio') Bio
+    main
+      h1#banner What's on the list
+      pre#description.text-highlight.
+        Here, you can track events / concerts / tours / presentations / live sessions of DoubleNB. Check back as the list is updated frequently.        
+      section
+        table#events-table
+          tr
+            th Date
+            th Location
+            th Description
+          tr
+            td 13 / Dec / 2016
+            td Melbourne
+            td Concert
+          tr
+            td 20 / Dec / 2016
+            td Vancouver
+            td Concert
+          tr
+            td 25 / Dec / 2016
+            td Denver
+            td Concert
+          tr
+            td 15 / Jan / 2016
+            td Berlin
+            td Conference
+          tr
+            td 17 / Jan / 2016
+            td Stuttgart
+            td Conference
+          tr
+            td 20 / Jan / 2016
+            td London
+            td Conference
+          tr
+            td 3 / Feb / 2016
+            td Kiev
+            td Concert
+          tr
+            td 15 / Jan / 2016
+            td Sofia
+            td Concert
+          tr
+            td 15 / Jan / 2016
+            td Brussels
+            td Live session
+    footer
+      #site-info
+        p#doublenb-2016 DoubleNB | 2016
+        p#powered-by
+          | Powered by 
+          a(href='#') Nipi
+    // script src="../js/audio-oscilloscope.js"></script
+    script(src='../js/audio-metadata.js')

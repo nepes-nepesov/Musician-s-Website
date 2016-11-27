@@ -24,6 +24,18 @@ app.get('/welcome', function (req, res) {
   res.render('welcome.jade', { title: 'Welcome' });
 });
 
+app.get('/video', function (req, res) {
+  res.render('video.jade', { title: 'Video' });
+});
+
+app.get('/events', function (req, res) {
+  res.render('events.jade', { title: 'Events' });
+});
+
+app.get('/bio', function (req, res) {
+  res.render('bio.jade', { title: 'Bio' });
+});
+
 /*
 
 app.get('/payment', function (req, res) {
